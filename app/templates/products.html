@@ -1,0 +1,12 @@
+<!doctype html>
+<h2>Results</h2>
+<table width="100%">
+  <tr><th>Product</th><th>Count</th><th>Dollars</th></tr>
+	{% for key in products.keys() %}
+  <tr>
+    <td>{{ key }}</td>
+    <td>{{ products[key][0] }}</td>
+    <td>{{ '${:,.2f}'.format(products[key][1]) }}</td>
+  </tr>
+  {% endfor %}
+</table>
