@@ -2,11 +2,37 @@
 <h2>Results</h2>
 <table width="100%">
   <tr><th>Product</th><th>Count</th><th>Dollars</th></tr>
-	{% for key in products.keys() %}
+	{% for dept in products.keys() %}
+  {% if dept != 'TOTAL' %}
   <tr>
-    <td>{{ key }}</td>
-    <td>{{ products[key][0] }}</td>
-    <td>{{ '${:,.2f}'.format(products[key][1]) }}</td>
+    <td><b>{{ dept }}</b></td>
+    <td></td>
+    <td></td>
   </tr>
+  {% for prod in products[dept].keys() %}
+  {% if prod != 'TOTAL' %}
+  <tr>
+    <td>{{ prod }}</td>
+    <td>{{ products[dept][prod][0] }}</td>
+    <td>{{ '${:,.2f}'.format(products[dept][prod][1]) }}</td>
+  </tr>
+  {% endif %}
   {% endfor %}
+  <tr>
+    <td><b>TOTAL</b></td>
+    <td></td>
+    <td><b>{{ '${:,.2f}'.format(products[dept]['TOTAL']) }}</b></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+  <tr>
+    <td><b>GRAND TOTAL</b></td>
+    <td></td>
+    <td><b>{{ '${:,.2f}'.format(products['TOTAL']) }}</b></td>
+  </tr>
 </table>
