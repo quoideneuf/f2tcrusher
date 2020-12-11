@@ -9,7 +9,7 @@
     <td></td>
     <td></td>
   </tr>
-  {% for prod in sorted(products[dept].keys()) %}
+  {% for prod in products[dept].keys()|sort %}
   {% if prod != 'TOTAL' %}
   <tr>
     <td>{{ prod }}</td>
